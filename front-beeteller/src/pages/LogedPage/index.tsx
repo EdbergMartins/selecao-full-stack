@@ -3,10 +3,11 @@ import { Box, MenuItem, Select } from '@mui/material';
 import { useState } from 'react';
 import CoinCard from '../../components/atoms/CoinCard';
 import CoinQuotation from '../../components/atoms/CoinQuotation';
+import TopBar from '../../components/atoms/TopBar';
 import { useStyles } from './styles';
 
 
-function HomePage() {
+function LogedPage() {
   const styles = useStyles(); 
   const [selectedFilterCoin, setSelectedFilterCoin] = useState('USD')
   const currencyQuoteList = [
@@ -26,8 +27,9 @@ function HomePage() {
 
   return (
     <Box className={styles.container}>
+      <TopBar />
       <Box>
-        <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '38px' }}>
           <span className={styles.coinsHeader}>Moedas</span>
           <CachedIcon sx={{ color: 'rgba(130, 130, 130, 1)', width: '33px', height: '33px' }} />
         </Box>
@@ -71,4 +73,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default LogedPage;

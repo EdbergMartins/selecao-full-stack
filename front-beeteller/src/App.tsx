@@ -1,8 +1,8 @@
-import LogedPage from './pages/LogedPage'
+import HomePage from './pages/HomePage'
 
 function App() {
   return (
-    <LogedPage />
+    <HomePage />
   )
 }
 

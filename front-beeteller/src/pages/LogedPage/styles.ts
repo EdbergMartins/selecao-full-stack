@@ -81,6 +81,21 @@ export const useStyles = makeStyles(() => ({
     lineHeight: '21px',
     letterSpacing: '-0.04em',
     color: '#333333',
+  },
+  topBar: {
+    height: '85px',
+    maxWidth: '1440px',
+    width: '100%',
+    borderRadius: '0px',
+    padding: ' 20px 135px 20px 135px',
+    background: 'rgba(255, 255, 255, 1)',
+    display: 'flex',
+    flexDirection: 'row ',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   }
+
+
+
 
 }));

@@ -2,6 +2,7 @@ import { LoadingButton } from '@mui/lab';
 import { Box } from '@mui/material';
 import { Formik } from 'formik';
 import imgLogin from '../../assets/imgLogin.svg';
+import TopBar from '../../components/atoms/TopBar';
 import { useStyles } from './styles';
 
 function HomePage() {
@@ -9,6 +10,7 @@ function HomePage() {
 
   return (
     <Box className={styles.container}>
+      <TopBar />
       <div className={styles.contentBox}>
         <div className={styles.pictureBox}>
           <img style={{ height: '100%', float: 'right' }} src={imgLogin} />
