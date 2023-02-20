@@ -1,4 +1,5 @@
 import { makeStyles } from '@mui/styles';
+import defaultTheme from '../../theme/defaultTheme';
 
 
 export const useStyles = makeStyles(() => ({
@@ -91,7 +92,7 @@ export const useStyles = makeStyles(() => ({
     gap: '10px',
     width: '417px',
     height: '56px',
-    background: '#F4C23B',
+    background: defaultTheme.background.primary,
   },
   link: {
     fontFamily: 'Roboto',

@@ -1,5 +1,6 @@
 import { makeStyles } from '@mui/styles';
-import defaultTheme from '../../theme/defaultTheme';
+import defaultTheme from '../../../theme/defaultTheme';
+
 
 
 export const useStyles = makeStyles(() => ({
@@ -73,14 +74,7 @@ export const useStyles = makeStyles(() => ({
     position: 'absolute',
     bottom: '24px',
     color: '#828282',
-  },
-  selectName: {
-    fontStyle: 'normal',
-    fontWeight: 500,
-    fontSize: '18px',
-    lineHeight: '21px',
-    letterSpacing: '-0.04em',
-    color: '#333333',
+
   }
 
 }));

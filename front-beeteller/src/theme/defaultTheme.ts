@@ -31,9 +31,7 @@ const defaultTheme: CustomTheme = {
     topbar: '#9D0A6B',
     layout: '#FAFAFA',
     roseSecondary: '#FDFAFC',
-    gradient: {
-      primary: 'linear-gradient(45deg, #f8f5fe 0%,#d2baf5 100%)'
-    }
+    primary: 'rgba(244, 194, 59, 1)',
   }
 };
 

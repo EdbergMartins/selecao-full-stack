@@ -1,12 +1,12 @@
 import { createTheme } from '@mui/material/styles';
-import defaultTheme from './defaultTheme';
 import baseConfig from './baseConfig';
+import defaultTheme from './defaultTheme';
 
 const theme = createTheme(
   {
     typography: {
       allVariants: {
-        fontFamily: 'Nunito'
+        fontFamily: 'Roboto'
       }
     }
   },
