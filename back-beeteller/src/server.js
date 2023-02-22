@@ -5,11 +5,10 @@ const cors = require('cors');
 
 app.use(express.json());
 app.use(cors());
-
-const db = require('./models/db');
-
 app.use(auth)
 
+
+const Users = require('./models/Users')
 
 
 app.listen(3000, () => {
