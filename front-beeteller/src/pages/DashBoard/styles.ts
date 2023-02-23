@@ -1,8 +1,8 @@
-import { makeStyles } from '@mui/styles';
+import makeStyles from '@mui/styles/makeStyles';
+
 import defaultTheme from '../../theme/defaultTheme';
 
-
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles(theme => ({
   container: {
     minHeight: 'calc(100% - 68px)',
     maxWidth: '100%',
@@ -93,9 +93,32 @@ export const useStyles = makeStyles(() => ({
     flexDirection: 'row ',
     justifyContent: 'space-between',
     alignItems: 'center'
+  },
+  coinCardBox: {
+    width: '100%',
+    maxWidth: '1170px',
+  },
+  coinCardHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: '38px',
+  },
+  coinCardContent: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  cardsCoin: {
+    margin: "43px 32px 43px 0px"
+  },
+  '@media (max-width:1180px)': {
+    coinCardContent: {
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    cardsCoin: {
+      margin: "10px 10px"
+    },
   }
-
-
-
 
 }));

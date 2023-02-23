@@ -17,6 +17,7 @@ function HomePage() {
   const navigate = useNavigate()
 
 
+
   const handleSubmit = async (values: any, actions: any) => {
     const { email, password } = values
     const response = await axios.post('http://localhost:3000/singIn',
@@ -129,6 +130,23 @@ function HomePage() {
                     disabled={isSubmitting}
                   >
                     Login
+                  </LoadingButton>
+                  <LoadingButton sx={{
+                    marginTop: '10px',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '20px 8px',
+                    gap: '10px',
+                    width: '417px',
+                    height: '56px',
+                    background: '#F4C23B',
+                    '& .Mui-focusVisible': { background: 'black' }
+                  }}
+                    onClick={() => navigate('/register')}
+                  >
+                    Registrar
                   </LoadingButton>
                 </div>
               </form>

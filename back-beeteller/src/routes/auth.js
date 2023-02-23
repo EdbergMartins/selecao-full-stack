@@ -16,7 +16,7 @@ auth.post('/singUp', async (req, res) => {
   date.password = await bcrypt.hash(date.password, 8)
 
   const queryString = 'INSERT INTO users (email, password) VALUES ( $1, $2)';
-  const values = [date.email, date.password]
+  const values = [date.email.toLowerCase(), date.password]
 
 
   await User.query(queryString, values)
@@ -36,10 +36,9 @@ auth.post('/singUp', async (req, res) => {
 
 auth.post('/singIn', async (req, res) => {
   const { email, password } = req.body;
-  // Autentica o usuário
   const queryString = 'SELECT id, email, password FROM users WHERE email = $1';
   User.connect()
-  await User.query(queryString, [email])
+  await User.query(queryString, [email.toLowerCase()])
     .then((result) => {
       if (result.rowCount === 0) {
         return res.json({

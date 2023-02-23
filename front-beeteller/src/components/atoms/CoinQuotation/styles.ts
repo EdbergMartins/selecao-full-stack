@@ -31,7 +31,7 @@ export const useStyles = makeStyles(() => ({
     alignItems: 'center',
     marginRight: '16px'
   },
-  cell: {
+  cellBody: {
     display: 'flex !important',
     border: 'none !important',
     alignSelf: 'center',
@@ -42,6 +42,19 @@ export const useStyles = makeStyles(() => ({
     lineHeight: '16px',
     letterSpacing: '-0.04em',
     textAlign: 'left',
+    marginLeft: '32px'
+  },
+  cellHeader: {
+    display: 'flex !important',
+    border: 'none !important',
+    alignSelf: 'center',
+    width: '100vw',
+    color: 'rgba(130, 130, 130, 1) !important',
+    fontSize: '14px',
+    fontWeight: 500,
+    lineHeight: '16px',
+    letterSpacing: '-0.04em',
+    textAlign: 'right',
   },
   arrowFilter: {
     '&:hover': {
@@ -67,6 +80,21 @@ export const useStyles = makeStyles(() => ({
     letterSpacing: '-0.04em',
     textAlign: 'left',
     color: 'black'
+  },
+  '@media (max-width:700px)': {
+    cellHeader: {
+      padding: '16px 0px !important',
+      justifyContent: 'right',
+      maxWidth: '150px'
+    }
+
+  },
+  '@media (max-width:565px)': {
+    cellBody: {
+      marginLeft: '0',
+      padding: '16px 5px !important'
+    }
+
   }
 
 

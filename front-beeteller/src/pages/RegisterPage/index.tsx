@@ -129,7 +129,7 @@ function RegisterPage() {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Registrar
+                    Cadastrar
                   </LoadingButton>
                 </div>
               </form>
