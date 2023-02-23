@@ -1,39 +1,62 @@
 # Beeteller - Desenvolvedor Full Stack
 
-Olá, me chamo Edberg Nóbrega e é com muita satisfação que venho apresentar meu código proposto para o desafio da Beeteller, para vaga de desenvolvedor Full Stack
+Olá, me chamo Edberg Nóbrega e é com muita satisfação que venho apresentar meu código proposto para o desafio da **Beeteller**, para vaga de desenvolvedor Full Stack.
 
-## Instruções
+## Tecnologias usadas
 
-Bem como o proprio nome do desafio sugere, este código é dividido em duas partes a do front e a do back. Para isso eu fiz o clone do repositório que me foi enviado e a partir deste clone criei duas pastas, as quais tem as finalidades expecificas de cada stack. Então vamos iniciar nosso onboarding ? 
+- **Frontend**:
+    - `React`
+    - `VITE`
+    - `Material UI (MUI)`
+    
+- **Backend**:
+    - `Node`
+    - `Express`
+    - `Postgres`
 
-De início precisamos clonar os códigos que estão neste link : https://github.com/EdbergMartins/selecao-full-stack
+## Instalação
 
-Observação importante a pasta do arquivo deve estar contida em uma pasta raiz, como por exemplo C: ou D: . Pois se a pasta estiver a área de trabalho a aplicação não irá funcionar
+#### Pré-requisitos
 
-# Configuração do BackEnd
+- `node` instalado (versão `>= 14`)
+- `yarn` instalado
+- `PostgreSQL` instalado (versão `>= 15`)
 
-Para o backend foram utilizados o Node.Js na sua versão 15, juntamente com o PostgreSQL e o pgAdmin4, portanto preciso que sua máquina esteja com esses programas instalados
+#### Clone o repositório:
 
-Para o backend você deve instalar todas as dependencias com um gerenciador de pacotes de sua preferencia, neste caso estou utilizando o yarn.
+```bash
+$ git clone git@github.com:EdbergMartins/selecao-full-stack.git
+```
 
-Com as dependencias instaladas agora só precisamos configurar as credenciais para que o nosso back consiga se comunicar com o postgres, para isso vamos navegar até o arquivo de conexão que fina na pasta src>modules>db.js nesta pasta você deverá inserir as credenciais que foram configuradas na instalação do PostgreSQL e com isso teremos nosso backend configurado.
+#### Instale todas as dependecias:
 
-Agora podemos iniciar o nosso backend a partir do comando " yarn run dev". Após isso o no console do terminar irá aparecer a mensagem "Server is listening on port 3000" significando que o backend está 100%.
+```bash
+$ cd selecao-full-stack/front-beeteller
+$ yarn
+$ cd ../back-beeteller
+$ yarn
+```
 
-# Configuração do FrontEnd
+#### Executando o frontend e o backend:
 
-Abra a pasta "front-beeteller" em seu editor de código.
+Abra um terminal e execute:
 
-Caso necessário faça a instalação do yarn novamente na pasta do front, seguindo os mesmos passos que foram descritos anteriromente.
+```bash
+$ cd selecao-full-stack/front-beeteller
+$ yarn start
+```
 
-Com o yarn instalado vamos enviar o comendo " yarn " no terminarl para o gerenciador de pacotes faça a instalação de todas as dependencias necessárias para que nosso front esteja funcionando.
+Abra outro terminal e execute:
 
-Após a instalação de todas as dependencias já podemos dar inicio ao projeto através do comando "yarn start"
+```bash
+$ cd selecao-full-stack/back-beeteller
+$ yarn dev
+```
 
-Com isso a aplicação esta rodando em sua maquina. 
+Acesse a aplicação através da URL: **[http://127.0.0.1:5173/](http://127.0.0.1:5173/)**
 
-Gostaria de agradecer a todos que tiveram a pasciencia de executar este tutoral ate o fim.
+#### Observações
 
-
-
+- Caso você tenha um usuário ou senha diferente dos valores padrões do PostgresSQL (`postgres`/`postgres`), por favor acesse os arquivos `create.js` e `db.js` e altere os valores correspondentes.
+- Por motivos de compatibilidade, usuários de Windows devem baixar o projeto na pasta raiz do sistema (`C:/`).
 
