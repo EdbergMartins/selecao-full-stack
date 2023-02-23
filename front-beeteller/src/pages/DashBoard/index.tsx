@@ -13,7 +13,8 @@ function DashBoard() {
   const styles = useStyles();
   const navigate = useNavigate()
   const [selectedFilterCoin, setSelectedFilterCoin] = useState('USD-BRL')
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoadingDate, setIsLoadingDate] = useState(true)
+  const [isLoadingList, setIsLoadingList] = useState(true)
   const [data, setData] = useState([])
   const [listPerDay, setListPerday] = useState([])
   const currencyQuoteList = [
@@ -32,43 +33,45 @@ function DashBoard() {
   ]
 
   useEffect(() => {
-    handleGetDate()
     handleGetList()
   }, [selectedFilterCoin])
 
+  useEffect(() => {
+    handleGetDate()
+  }, [])
 
 
 
   const handleGetDate = async (values: any, actions: any) => {
-    setIsLoading(true)
+    setIsLoadingDate(true)
       try {
         const response = await axios.get(' https://economia.awesomeapi.com.br/last/USD-BRL,BTC-EUR,BTC-USD')
         const arr = Object.keys(response.data).map(key => {
           return { id: key, ...response.data[key] };
         });
         setData(arr)
-        setIsLoading(false)
+        setIsLoadingDate(false)
       }
       catch (err) {
         console.error(err)
-        setIsLoading(false)
+        setIsLoadingDate(false)
       }
     }
 
 
   const handleGetList = async () => {
-    setIsLoading(true)
+    setIsLoadingList(true)
     try {
       const response = await axios.get(`https://economia.awesomeapi.com.br/json/daily/${selectedFilterCoin}/15`)
       const arr = Object.keys(response.data).map(key => {
         return { id: key, ...response.data[key] };
       });
       setListPerday(arr)
-      setIsLoading(false)
+      setIsLoadingList(false)
     }
     catch (err) {
       console.error(err)
-      setIsLoading(false)
+      setIsLoadingList(false)
     }
   }
 
@@ -80,8 +83,7 @@ function DashBoard() {
   }, [])
 
   const handleLogout = () => {
-    navigate('/')
-    localStorage.removeItem('token')
+    handleGetDate()
   }
 
   const enumSimbolCoin = [
@@ -133,7 +135,7 @@ function DashBoard() {
                   codeIn={data.codein}
                   code={data.code}
                   simbolCoin={enumSimbolCoins(data.codein)}
-                  isLoading={isLoading}
+                  isLoading={isLoadingDate}
                 />
               </Box>
             )
@@ -149,7 +151,6 @@ function DashBoard() {
                 key={index}
                 value={value}
                 onClick={(event) => setSelectedFilterCoin(event.target.dataset.value)}
-
                 className={styles.selectName}
               >
                 {name}
@@ -162,6 +163,7 @@ function DashBoard() {
         <CoinQuotation
           typeCoin={selectedFilterCoin}
           listCoin={listPerDay}
+          isLoading={isLoadingList}
         />
       </Box>
     </Box>

@@ -1,6 +1,6 @@
 import EuroIcon from '@mui/icons-material/Euro';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Box, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Box, Skeleton, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import bitCoinSign from '../../../assets/bitCoinSign.svg';
 import dollarSign from '../../../assets/dollarSign.svg';
 import { useStyles } from './styles';
@@ -8,9 +8,10 @@ import { useStyles } from './styles';
 interface AlertMessageProps {
   typeCoin?: string;
   listCoin?: [];
+  isLoading?: boolean
 }
 
-function CoinCard({ typeCoin, listCoin }: AlertMessageProps) {
+function CoinCard({ typeCoin, listCoin, isLoading }: AlertMessageProps) {
 
   const styles = useStyles();
   const name = listCoin[0]?.name?.split('/')[0]
@@ -70,6 +71,7 @@ function CoinCard({ typeCoin, listCoin }: AlertMessageProps) {
           </TableCell>
         </TableRow>
       </TableHead>
+      {!isLoading ? 
       <TableBody className={styles.pairCoins}>
         {listCoin.map((data, index) =>
         <TableRow style={{ display: 'flex', flexDirection: 'row' }}>
@@ -103,7 +105,24 @@ function CoinCard({ typeCoin, listCoin }: AlertMessageProps) {
           </TableCell>
         </TableRow>
         )}
-      </TableBody>
+        </TableBody>
+        :
+        new Array(15).fill(0).map((_, index) => {
+          return (
+            <Box style={{ display: 'flex' }} className={styles.pairCoins} key={index}>
+              <Skeleton variant="circular" width={70} height={70} />
+              <Box style={{ display: 'flex', flexDirection: 'column' }}>
+                <Skeleton width="100px" height='40px' />
+                <Skeleton width="100px" height='30px' />
+              </Box>
+              <Box style={{ width: '100%', display: 'flex', flexDirection: 'row' }}>
+                <Skeleton width="100px" height='40px' style={{ marginLeft: '22%' }} />
+                <Skeleton width="100px" height='40px' style={{ marginLeft: '22%' }} />
+                <Skeleton width="100px" height='40px' style={{ marginLeft: '22%' }} />
+              </Box>
+            </Box>)
+        })
+      }
     </>
   );
 
