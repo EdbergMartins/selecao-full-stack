@@ -2,13 +2,14 @@ const { Client } = require('pg');
 
 const client = new Client({
     user: "postgres",
-    password: "root",
+    password: "1609",
     host: "localhost",
     port: "5432",
 });
 
 const createDB = async () => {
     try {
+        await client.connect();
         await client.query("CREATE DATABASE beeteller");
         console.log('Database criada com sucesso');
     } catch (err) {
