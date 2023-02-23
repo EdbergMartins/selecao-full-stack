@@ -8,9 +8,12 @@ interface AlertMessageProps {
   typeCoin?: string;
   valueInReal?: string;
   nameOfCoin?: string;
+  codeIn?: string;
+  code?: string
+  simbolCoin?: string;
 }
 
-function CoinCard({ typeCoin, valueInReal, nameOfCoin }: AlertMessageProps) {
+function CoinCard({ typeCoin, valueInReal, nameOfCoin, codeIn, code, simbolCoin }: AlertMessageProps) {
 
   const styles = useStyles();
 
@@ -28,17 +31,17 @@ function CoinCard({ typeCoin, valueInReal, nameOfCoin }: AlertMessageProps) {
   return (
     <Box className={styles.pairCoins}>
       <Box className={styles.contentPair}>
-        <Typography>BRL/USD</Typography>
+        <Typography>{`${code}/${codeIn}`}</Typography>
         <span className={styles.yellowCircles}>
-          {enumTypeCoins()}
+          {enumTypeCoins(typeCoin)}
         </span>
       </Box>
       <Box style={{ display: 'flex', position: 'absolute', top: '62px', alignItems: 'center' }}>
         <span className={styles.typeReal}>
-          R$
+          {simbolCoin[0].simbol}
         </span>
         <span className={styles.realValue}>
-          {valueInReal}
+          {parseFloat(valueInReal).toLocaleString(`${simbolCoin[0].locale}`, { currency: `${code}` })}
         </span>
       </Box>
       <Box className={styles.nameOfCoin}>
