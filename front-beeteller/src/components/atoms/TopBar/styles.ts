@@ -14,5 +14,10 @@ export const useStyles = makeStyles(() => ({
     flexDirection: 'row ',
     justifyContent: 'space-between',
     alignItems: 'center'
+  },
+  img: {
+    '&:hover': {
+      cursor: 'pointer'
+    }
   }
 }));

@@ -82,7 +82,7 @@ function DashBoard() {
     localStorage.getItem('token') === null && navigate('/')
   }, [])
 
-  const handleLogout = () => {
+  const handleRefresh = () => {
     handleGetDate()
   }
 
@@ -122,7 +122,7 @@ function DashBoard() {
       <Box>
         <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '38px' }}>
           <span className={styles.coinsHeader}>Moedas</span>
-          <CachedIcon onClick={() => handleLogout()} sx={{ color: 'rgba(130, 130, 130, 1)', width: '33px', height: '33px' }} />
+          <CachedIcon onClick={() => handleRefresh()} sx={{ color: 'rgba(130, 130, 130, 1)', width: '33px', height: '33px', '&:hover': { cursor: 'pointer' } }} />
         </Box>
         <Box style={{ display: 'flex', flexDirection: 'row' }}>
           {data.map((data, index) => {
