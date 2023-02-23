@@ -82,18 +82,6 @@ export const useStyles = makeStyles(theme => ({
     letterSpacing: '-0.04em',
     color: '#333333',
   },
-  topBar: {
-    height: '85px',
-    maxWidth: '1440px',
-    width: '100%',
-    borderRadius: '0px',
-    padding: ' 20px 135px 20px 135px',
-    background: 'rgba(255, 255, 255, 1)',
-    display: 'flex',
-    flexDirection: 'row ',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
   coinCardBox: {
     width: '100%',
     maxWidth: '1170px',
@@ -119,6 +107,10 @@ export const useStyles = makeStyles(theme => ({
     cardsCoin: {
       margin: "10px 10px"
     },
+    coinCardBox: {
+      padding: '0px 20px'
+    }
   }
+
 
 }));

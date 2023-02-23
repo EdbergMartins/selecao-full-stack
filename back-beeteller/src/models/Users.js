@@ -8,7 +8,7 @@ const Users = db.query(`
   );
 `).then((result) => {
   if (!result.rows[0].exists) {
-    console.log('Table does not exist! Creating table...');
+    console.log('Criando as tabelas...');
     return db.query(`
       CREATE TABLE users (
         id SERIAL PRIMARY KEY,
@@ -18,9 +18,9 @@ const Users = db.query(`
     `);
   }
 }).then(() => {
-  console.log('All tables createds')
+  console.log('Todas as tabelas criadas')
 }).catch((err) => {
-  console.error('Error creating/checking table:', err);
+  console.error('Erro ao criar as tabelas:', err);
 })
 
 module.exports = Users
