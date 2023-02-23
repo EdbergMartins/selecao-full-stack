@@ -42,14 +42,14 @@ yarn
 Abra um terminal e execute:
 
 ```bash
-cd selecao-full-stack/front-beeteller
+cd front-beeteller
 yarn start
 ```
 
 Abra outro terminal e execute:
 
 ```bash
-cd selecao-full-stack/back-beeteller
+cd back-beeteller
 yarn start
 ```
 
