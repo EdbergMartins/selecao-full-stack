@@ -1,3 +1,4 @@
+
 import { LoadingButton } from '@mui/lab';
 import { Box } from '@mui/material';
 import axios from 'axios';
@@ -9,26 +10,25 @@ import TopBar from '../../components/atoms/TopBar';
 import { useStyles } from './styles';
 
 
-function HomePage() {
+function RegisterPage() {
   const styles = useStyles();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState(false)
+
+
   const navigate = useNavigate()
 
 
   const handleSubmit = async (values: any, actions: any) => {
     const { email, password } = values
-    const response = await axios.post('http://localhost:3000/singIn',
-      JSON.stringify({ email, password }),
-      {
-        headers: { 'Content-Type': 'application/json' }
-      })
-    if (response.data.token) {
-      localStorage.setItem('token', response.data.token)
+    try {
+      const response = await axios.post('http://localhost:3000/singUp',
+        JSON.stringify({ email, password }),
+        {
+          headers: { 'Content-Type': 'application/json' }
+        })
       navigate('/dashboard')
       actions.setSubmitting(false)
-    } else {
+    } catch (err) {
       setError(true)
       actions.setSubmitting(false)
     }
@@ -37,17 +37,17 @@ function HomePage() {
   return (
     <Box className={styles.container}>
       <TopBar />
+
       <div className={styles.contentBox}>
         <div className={styles.pictureBox}>
           <img style={{ height: '100%', float: 'right' }} src={imgLogin} />
         </div>
         <div className={styles.loginBox}>
           <h1 className={styles.fristText}>
-            Olá! Bem vindo de volta.
+            Olá! Seja bem vindo.
           </h1>
           <h2 className={styles.secondText}>
-            Faça login com seus dados inseridos
-            durante o seu registro.
+            Insira um email válido e uma senha para que possamos registrar seus dados.
           </h2>
 
           <Formik
@@ -86,20 +86,19 @@ function HomePage() {
                   <input
                     type="email"
                     name="email"
-                    onChange={handleChange}
                     onFocus={() => setError(false)}
+                    onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
                     className={styles.input}
                     placeholder="Exemplo@email.com"
                   />
-                  {errors.email && touched.email && errors.email}
+                  <span style={{ color: 'red' }}>
+                    {errors.email && touched.email && errors.email}
+                  </span>
                   <div style={{ marginBottom: '8px', display: 'flex', justifyContent: 'space-between' }}>
                     <span className={styles.titles}>
                       Senha
-                    </span>
-                    <span className={styles.link}>
-                      Esqueceu a senha
                     </span>
                   </div>
                   <input
@@ -111,8 +110,10 @@ function HomePage() {
                     className={styles.input}
                     placeholder="Enter password"
                   />
-                  {errors.password && touched.password && errors.password}
-                  {error && <Box style={{ color: 'red', margin: 'auto' }}>Usuário ou senha incorretos </Box>}
+                  <span style={{ color: 'red' }}>
+                    {errors.password && touched.password && errors.password}
+                  </span>
+                  {error && <Box style={{ color: 'red', margin: 'auto' }}>Usuário já cadastrado no banco de dados</Box>}
                   <LoadingButton sx={{
                     display: 'flex',
                     flexDirection: 'row',
@@ -128,7 +129,7 @@ function HomePage() {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Login
+                    Registrar
                   </LoadingButton>
                 </div>
               </form>
@@ -141,5 +142,5 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default RegisterPage;
 

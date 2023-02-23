@@ -5,6 +5,7 @@ import './index.css';
 import DashBoard from './pages/DashBoard';
 import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/HomePage';
+import RegisterPage from './pages/RegisterPage';
 
 const isAutenticated = localStorage.getItem('token') !== null
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <DashBoard />
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />
   }
 ]);
 
