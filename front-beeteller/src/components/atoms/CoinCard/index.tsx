@@ -1,5 +1,5 @@
 import EuroIcon from '@mui/icons-material/Euro';
-import { Box, Typography } from '@mui/material';
+import { Box, Skeleton, Typography } from '@mui/material';
 import bitCoinSign from '../../../assets/bitCoinSign.svg';
 import dollarSign from '../../../assets/dollarSign.svg';
 import { useStyles } from './styles';
@@ -31,6 +31,8 @@ function CoinCard({ typeCoin, valueInReal, nameOfCoin, codeIn, code, simbolCoin,
 
   return (
     <Box className={styles.pairCoins}>
+      {!isLoading ?
+        <>
       <Box className={styles.contentPair}>
         <Typography>{`${code}/${codeIn}`}</Typography>
         <span className={styles.yellowCircles}>
@@ -47,7 +49,29 @@ function CoinCard({ typeCoin, valueInReal, nameOfCoin, codeIn, code, simbolCoin,
       </Box>
       <Box className={styles.nameOfCoin}>
         {nameOfCoin}
-      </Box>
+          </Box>
+        </>
+        :
+        <>
+          <Box style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
+            <Skeleton width="20%" height='42px' animation="wave" />
+            <Skeleton variant="circular" width={70} height={70} />
+          </Box>
+          <Box style={{ width: '100%', display: 'flex', position: 'absolute', top: '80px' }}>
+            <Skeleton width="10%" height='42px' animation="wave" />
+            <Skeleton style={{
+              position: 'absolute',
+              top: '-20px',
+              left: '52px',
+            }} width="30%" height='80px' animation="wave" top='10px' />
+          </Box>
+          <Skeleton style={{
+            position: 'absolute',
+            bottom: '12px',
+            left: '30px',
+          }} width="40%" height='30px' animation="wave" />
+        </>
+      }
     </Box>
   );
 }
