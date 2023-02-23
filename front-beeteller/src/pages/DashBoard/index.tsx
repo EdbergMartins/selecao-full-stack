@@ -116,15 +116,15 @@ function DashBoard() {
   return (
     <Box className={styles.container}>
       <TopBar />
-      <Box>
-        <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '38px' }}>
+      <Box className={styles.coinCardBox}>
+        <Box className={styles.coinCardHeader}>
           <span className={styles.coinsHeader}>Moedas</span>
           <CachedIcon onClick={() => handleRefresh()} sx={{ color: 'rgba(130, 130, 130, 1)', width: '33px', height: '33px', '&:hover': { cursor: 'pointer' } }} />
         </Box>
-        <Box style={{ display: 'flex', flexDirection: 'row' }}>
+        <Box className={styles.coinCardContent}>
           {data.map((data, index) => {
             return (
-              <Box style={index !== 2 ? { margin: "43px 32px 43px 0px" } : { margin: "43px 0px 43px 0px" }} key={index}>
+              <Box className={styles.cardsCoin} key={index}>
                 <CoinCard
                   typeCoin={data.code}
                   valueInReal={data.bid}
