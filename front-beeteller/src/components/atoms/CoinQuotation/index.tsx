@@ -104,21 +104,21 @@ function CoinCard({ typeCoin, listCoin, isLoading }: AlertMessageProps) {
   return (
     <>
       <TableHead>
-        <TableRow style={{ marginTop: '47px', display: 'flex' }}>
-          <TableCell className={styles.cell} style={{ marginLeft: '40px', maxWidth: '400px' }}>
+        <TableRow style={{ marginTop: '47px', display: 'flex', width: '100vw', maxWidth: '1170px' }}>
+          <TableCell className={styles.cellHeader} style={{}}>
             Moeda
           </TableCell>
-          <TableCell className={styles.cell} style={{ maxWidth: '200px' }} align="left">
+          <TableCell className={styles.cellHeader} style={{}} align="left">
             <span>
               Mínima
             </span>
             <KeyboardArrowDownIcon onClick={() => handleSortLow()} className={styles.arrowFilter} />
           </TableCell>
-          <TableCell className={styles.cell} style={{ maxWidth: '200px' }} align="left">
+          <TableCell className={styles.cellHeader} style={{}} align="left">
             Máxima
             <KeyboardArrowDownIcon onClick={() => handleSortHigh()} className={styles.arrowFilter} />
           </TableCell>
-          <TableCell className={styles.cell} style={{ maxWidth: '330px' }} align="right">
+          <TableCell className={styles.cellHeader} style={{}} align="right">
             <KeyboardArrowDownIcon onClick={() => handleSortPct()} className={styles.arrowFilter} />
             Variação
           </TableCell>
@@ -127,8 +127,8 @@ function CoinCard({ typeCoin, listCoin, isLoading }: AlertMessageProps) {
       {!isLoading ? 
       <TableBody className={styles.pairCoins}>
           {listCoins.map((data, index) =>
-        <TableRow style={{ display: 'flex', flexDirection: 'row' }}>
-          <TableCell className={styles.cell} style={{ marginLeft: '32px', maxWidth: '400px' }}>
+            <TableRow style={{ display: 'flex', flexDirection: 'row', width: '100vw', maxWidth: '1170px' }}>
+              <TableCell className={styles.cellBody}>
             <span className={styles.yellowCircles}>
               {enumTypeCoins()}
             </span>
@@ -141,18 +141,18 @@ function CoinCard({ typeCoin, listCoin, isLoading }: AlertMessageProps) {
               </span>
             </Box>
           </TableCell>
-          <TableCell className={styles.cell} style={{ maxWidth: '200px' }}>
+              <TableCell className={styles.cellBody} style={{}}>
                 <span className={styles.valueQuote}>
                   {data.low}
 
             </span>
           </TableCell>
-          <TableCell className={styles.cell} style={{ maxWidth: '200px' }}>
+              <TableCell className={styles.cellBody} style={{}}>
             <span className={styles.valueQuote}>
                   {data.high}
             </span>
           </TableCell>
-          <TableCell className={styles.cell} style={{ maxWidth: '330px' }} align="right">
+              <TableCell className={styles.cellBody} style={{}} align="right">
               <span style={data.varBid.includes('-') ? { background: 'rgba(224, 224, 224, 1)' } : { background: 'rgba(244, 194, 59, 1)' }} className={styles.variantQuote}>
                 {`${(data.pctChange)}%`}
             </span>

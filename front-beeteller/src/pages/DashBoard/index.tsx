@@ -156,7 +156,7 @@ function DashBoard() {
           </Select>
         </Box>
       </Box>
-      <Box>
+      <Box style={{ maxWidth: '1170px', width: '100vw' }}>
         <CoinQuotation
           typeCoin={selectedFilterCoin}
           listCoin={listPerDay}
