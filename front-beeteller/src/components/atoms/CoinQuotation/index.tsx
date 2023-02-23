@@ -101,9 +101,6 @@ function CoinCard({ typeCoin, listCoin, isLoading }: AlertMessageProps) {
     setListCoins(sortedlistCoins);
   };
 
-
-  console.log(listCoins)
-
   return (
     <>
       <TableHead>

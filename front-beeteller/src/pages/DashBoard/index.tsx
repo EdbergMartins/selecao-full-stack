@@ -113,9 +113,6 @@ function DashBoard() {
     return simbolCoin
 
   }
-
-  console.log(selectedFilterCoin)
-
   return (
     <Box className={styles.container}>
       <TopBar />
