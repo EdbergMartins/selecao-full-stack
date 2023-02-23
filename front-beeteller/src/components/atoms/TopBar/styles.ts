@@ -19,5 +19,10 @@ export const useStyles = makeStyles(() => ({
     '&:hover': {
       cursor: 'pointer'
     }
+  },
+  '@media (max-width:700px)': {
+    topBar: {
+      padding: ' 20px 50px 20px 50px',
+    }
   }
 }));
