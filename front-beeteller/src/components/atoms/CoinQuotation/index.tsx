@@ -7,18 +7,39 @@ import { useStyles } from './styles';
 
 interface AlertMessageProps {
   typeCoin?: string;
-  valueInReal?: string;
-  nameOfCoin?: string;
+  listCoin?: [];
 }
 
-function CoinCard({ typeCoin, valueInReal, nameOfCoin }: AlertMessageProps) {
+function CoinCard({ typeCoin, listCoin }: AlertMessageProps) {
 
   const styles = useStyles();
+  const name = listCoin[0]?.name?.split('/')[0]
+  const initialDate = listCoin[0]?.create_date.split(' ')[0].split('-').join('/')
+
+
+  const dateQuote = (date, index) => {
+    const milisegonds = Date.parse(initialDate);
+    if (index === 0) {
+      var data = new Date(milisegonds);
+      const day = data.getDate();
+      const month = data.getMonth() + 1;
+      const year = data.getFullYear();
+      return `${day}/${month}/${year}`
+    } else {
+      const constOldDate = (milisegonds - (1000 * 60 * 60 * 24 * (index + 1)))
+      const data = new Date(constOldDate);
+      const day = data.getDate();
+      const month = data.getMonth() + 1;
+      const year = data.getFullYear();
+      return `${day}/${month}/${year}`
+    }
+
+  }
 
   const enumTypeCoins = () => {
-    if (typeCoin === 'USD') {
+    if (typeCoin === 'USD-BRL') {
       return (<img style={{ height: '100%', float: 'right' }} src={dollarSign} />)
-    } else if (typeCoin === 'BTC') {
+    } else if (typeCoin === 'BTC-BRL') {
       return (<img style={{ height: '100%', float: 'right' }} src={bitCoinSign} />)
     } else {
       return (<EuroIcon sx={{ fill: 'black' }} />)
@@ -50,6 +71,7 @@ function CoinCard({ typeCoin, valueInReal, nameOfCoin }: AlertMessageProps) {
         </TableRow>
       </TableHead>
       <TableBody className={styles.pairCoins}>
+        {listCoin.map((data, index) =>
         <TableRow style={{ display: 'flex', flexDirection: 'row' }}>
           <TableCell className={styles.cell} style={{ marginLeft: '32px', maxWidth: '400px' }}>
             <span className={styles.yellowCircles}>
@@ -57,29 +79,30 @@ function CoinCard({ typeCoin, valueInReal, nameOfCoin }: AlertMessageProps) {
             </span>
             <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ fontWeight: 'bold', color: 'black' }}>
-                Dolar Americano
+                  {name}
               </span>
               <span>
-                10/01/2021
+                  {dateQuote(data.timestampm, index)}
               </span>
             </Box>
           </TableCell>
           <TableCell className={styles.cell} style={{ maxWidth: '200px' }}>
             <span className={styles.valueQuote}>
-              5.5461
+                {data.high}
             </span>
           </TableCell>
           <TableCell className={styles.cell} style={{ maxWidth: '200px' }}>
             <span className={styles.valueQuote}>
-              5.5461
+                {data.low}
             </span>
           </TableCell>
           <TableCell className={styles.cell} style={{ maxWidth: '330px' }} align="right">
-            <span className={styles.variantQuote}>
-              + 1%
+              <span style={data.varBid.includes('-') ? { background: 'rgba(224, 224, 224, 1)' } : { background: 'rgba(244, 194, 59, 1)' }} className={styles.variantQuote}>
+                {`${(data.pctChange)}%`}
             </span>
           </TableCell>
         </TableRow>
+        )}
       </TableBody>
     </>
   );

@@ -11,9 +11,10 @@ interface AlertMessageProps {
   codeIn?: string;
   code?: string
   simbolCoin?: string;
+  isLoading?: boolean
 }
 
-function CoinCard({ typeCoin, valueInReal, nameOfCoin, codeIn, code, simbolCoin }: AlertMessageProps) {
+function CoinCard({ typeCoin, valueInReal, nameOfCoin, codeIn, code, simbolCoin, isLoading }: AlertMessageProps) {
 
   const styles = useStyles();
 
@@ -49,8 +50,6 @@ function CoinCard({ typeCoin, valueInReal, nameOfCoin, codeIn, code, simbolCoin 
       </Box>
     </Box>
   );
-
-
 }
 
 export default CoinCard;
