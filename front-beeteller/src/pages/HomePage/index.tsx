@@ -1,13 +1,39 @@
 import { LoadingButton } from '@mui/lab';
 import { Box } from '@mui/material';
+import axios from 'axios';
 import { Formik } from 'formik';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import imgLogin from '../../assets/imgLogin.svg';
 import TopBar from '../../components/atoms/TopBar';
 import { useStyles } from './styles';
 
+
 function HomePage() {
   const styles = useStyles();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate()
 
+
+  const handleSubmit = async (values: any, actions: any) => {
+    const { email, password } = values
+    const response = await axios.post('http://localhost:3000/singIn',
+      JSON.stringify({ email, password }),
+      {
+        headers: { 'Content-Type': 'application/json' }
+      })
+    if (response.data.token) {
+      localStorage.setItem('token', response.data.token)
+      navigate('/dashboard')
+      actions.setSubmitting(false)
+    } else {
+      console.log('Usuário ou senha incorretos')
+      actions.setSubmitting(false)
+    }
+  };
+
+  console.log(localStorage.getItem('token'))
   return (
     <Box className={styles.container}>
       <TopBar />
@@ -26,6 +52,10 @@ function HomePage() {
 
           <Formik
             initialValues={{ email: '', password: '' }}
+            onSubmit={(values, actions) => {
+              handleSubmit(values, actions)
+
+            }}
             validate={values => {
               const errors = {};
               if (!values.email) {
@@ -36,12 +66,6 @@ function HomePage() {
                 errors.email = 'Invalid email address';
               }
               return errors;
-            }}
-            onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 400);
             }}
           >
             {({
@@ -101,7 +125,8 @@ function HomePage() {
                     '& .Mui-focusVisible': { background: 'black' }
                   }}
                     type="submit"
-                    disabled={isSubmitting}>
+                    disabled={isSubmitting}
+                  >
                     Login
                   </LoadingButton>
                 </div>
@@ -116,3 +141,4 @@ function HomePage() {
 }
 
 export default HomePage;
+

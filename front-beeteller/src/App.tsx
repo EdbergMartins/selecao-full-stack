@@ -1,8 +1,8 @@
-import HomePage from './pages/HomePage'
+import RoutesProject from './routes'
 
 function App() {
   return (
-    <HomePage />
+    <RoutesProject />
   )
 }
 
