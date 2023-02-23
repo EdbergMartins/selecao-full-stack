@@ -33,7 +33,6 @@ function HomePage() {
     }
   };
 
-  console.log(localStorage.getItem('token'))
   return (
     <Box className={styles.container}>
       <TopBar />
