@@ -25,16 +25,16 @@ Olá, me chamo Edberg Nóbrega e é com muita satisfação que venho apresentar 
 #### Clone o repositório:
 
 ```bash
-$ git clone git@github.com:EdbergMartins/selecao-full-stack.git
+git clone git@github.com:EdbergMartins/selecao-full-stack.git
 ```
 
 #### Instale todas as dependecias:
 
 ```bash
-$ cd selecao-full-stack/front-beeteller
-$ yarn
-$ cd ../back-beeteller
-$ yarn
+cd selecao-full-stack/front-beeteller
+yarn
+cd ../back-beeteller
+yarn
 ```
 
 #### Executando o frontend e o backend:
@@ -42,15 +42,15 @@ $ yarn
 Abra um terminal e execute:
 
 ```bash
-$ cd selecao-full-stack/front-beeteller
-$ yarn start
+cd front-beeteller
+yarn start
 ```
 
 Abra outro terminal e execute:
 
 ```bash
-$ cd selecao-full-stack/back-beeteller
-$ yarn start
+cd back-beeteller
+yarn start
 ```
 
 Acesse a aplicação através da URL: **[http://127.0.0.1:5173/](http://127.0.0.1:5173/)**
