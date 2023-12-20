@@ -2,7 +2,6 @@ const express = require('express');
 const auth = require('./routes/auth');
 const app = express();
 const cors = require('cors');
-const createDB = require('./models/create');
 const populateDB = require('./models/populate');
 
 app.use(express.json());
